@@ -27,8 +27,15 @@ const Main = () => {
         <div id="container">
             <header>
                 <h1>Stranger's Things</h1>
+                <div>
+                    <button>Log In</button>
+                    <button>Register</button>
+                </div>
             </header>
-            <div id="sideMenu">Side Menu</div>
+            <div id="sideMenu">
+                <h3>Side Menu</h3>
+                <button>All Posts</button>
+            </div>
             <Posts allPosts={allPosts} />
             <footer>Created by Dan Kempert</footer>
         </div>
