@@ -6,6 +6,9 @@ import Posts from "./components/Posts";
 const Main = () => {
 
     let [ allPosts, setAllPosts ] = useState([])
+    let [ usernameString, setUsernameString ] = useState("")
+    let [ passwordString, setPasswordString ] = useState("")
+    let [ verifyPasswordString, setVerifyPasswordString ] = useState("")
 
     useEffect(() => {
         async function getAllPosts() {
@@ -21,8 +24,6 @@ const Main = () => {
         getAllPosts()
     }, [])
 
-    console.log("allPosts:", allPosts)
-
     return (
         <div id="container">
             <header>
@@ -36,7 +37,45 @@ const Main = () => {
                 <h3>Side Menu</h3>
                 <button>All Posts</button>
             </div>
-            <Posts allPosts={allPosts} />
+            <div id="registration" className="mainContent">
+                <form id="register" onSubmit={async (event) => {
+                    event.preventDefault()
+                    if(passwordString == verifyPasswordString) {
+                        console.log(usernameString)
+                        console.log(passwordString)
+                        console.log(verifyPasswordString)
+                        setUsernameString("")
+                        setPasswordString("")
+                        setVerifyPasswordString("")
+                    } else {
+                        
+                    }
+                }}>
+                    <label htmlFor="username">Create Username:</label>
+                    <input 
+                        id="username" 
+                        type="text"
+                        placeholder="create username..."
+                        value={usernameString}
+                        onChange={(event) => setUsernameString(event.target.value)}></input>
+                    <label>Create Password: (must be a minimum of 7 characters)</label>
+                    <input
+                        id="password"
+                        type="text"
+                        placeholder="create password..."
+                        value={passwordString}
+                        onChange={(event) => setPasswordString(event.target.value)}></input>
+                    <label>Verify Password: (must match above)</label>
+                    <input
+                        id="verifyPassword"
+                        type="text"
+                        placeholder="verify password..."
+                        value={verifyPasswordString}
+                        onChange={(event) => setVerifyPasswordString(event.target.value)}></input>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            {/* <Posts allPosts={allPosts} /> */}
             <footer>Created by Dan Kempert</footer>
         </div>
     )

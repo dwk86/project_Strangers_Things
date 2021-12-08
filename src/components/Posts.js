@@ -5,9 +5,9 @@ const Posts = (props) => {
     let allPosts = props.allPosts
 
     return ( !allPosts ?
-        <div id="mainContent"></div>
+        <div id="allPosts" className="mainContent"></div>
         :
-        <div id="mainContent">
+        <div id="allPosts" className="mainContent">
             {allPosts ? allPosts.map((el, index) => (
                 <div key={index} className="postElement">
                     <h2 className="postTitle">{el.title}</h2>

@@ -29,9 +29,33 @@ header {
     background-color: gold;
 }
 
-#mainContent {
+.mainContent {
     grid-area: mn;
     background-color: lawngreen;
+}
+
+#registration {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#register {
+    display: flex;
+    flex-direction: column;
+}
+
+#username {
+    margin-bottom: 10px;
+}
+
+#password {
+    margin-bottom: 10px;
+}
+
+#verifyPassword {
+    margin-bottom: 10px;
 }
 
 footer {
