@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+#container {
+    display: grid;
+    grid-template-areas: 
+    "hd hd hd hd hd hd hd hd hd hd"
+    "sd mn mn mn mn mn mn mn mn mn"
+    "ft ft ft ft ft ft ft ft ft ft";
+    grid-template-rows: 10vh 80vh 10vh;
+}
+
+header {
+    grid-area: hd;
+    background-color: aqua;
+}
+
+#sideMenu {
+    grid-area: sd;
+    background-color: gold;
+}
+
+#mainContent {
+    grid-area: mn;
+    background-color: lawngreen;
+}
+
+footer {
+    grid-area: ft;
+    background-color: violet;
+}
