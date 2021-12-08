@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { fetchAllPosts } from "./components/api";
 import Posts from "./components/Posts";
+import Registration from "./components/Registration"
 
 const Main = () => {
 
@@ -9,6 +10,7 @@ const Main = () => {
     let [ usernameString, setUsernameString ] = useState("")
     let [ passwordString, setPasswordString ] = useState("")
     let [ verifyPasswordString, setVerifyPasswordString ] = useState("")
+    
 
     useEffect(() => {
         async function getAllPosts() {
@@ -37,7 +39,7 @@ const Main = () => {
                 <h3>Side Menu</h3>
                 <button>All Posts</button>
             </div>
-            <div id="registration" className="mainContent">
+            {/* <div id="registration" className="mainContent">
                 <form id="register" onSubmit={async (event) => {
                     event.preventDefault()
                     if(passwordString == verifyPasswordString) {
@@ -74,7 +76,8 @@ const Main = () => {
                         onChange={(event) => setVerifyPasswordString(event.target.value)}></input>
                     <button type="submit">Submit</button>
                 </form>
-            </div>
+            </div> */}
+            <Registration usernameString={usernameString} setUsernameString={setUsernameString} passwordString={passwordString} setPasswordString={setPasswordString} verifyPasswordString={verifyPasswordString} setVerifyPasswordString={setVerifyPasswordString} />
             {/* <Posts allPosts={allPosts} /> */}
             <footer>Created by Dan Kempert</footer>
         </div>
