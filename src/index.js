@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import { fetchAllPosts } from "./components/api";
 import Posts from "./components/Posts";
 import Registration from "./components/Registration"
 import LogIn from "./components/LogIn"
+import CreatePost from "./components/CreatePost";
 
 const Main = () => {
 
     let [ allPosts, setAllPosts ] = useState([])
     let [ userToken, setUserToken ] = useState("")
     
+    console.log("userToken:", userToken)
 
     useEffect(() => {
         async function getAllPosts() {
@@ -26,23 +29,39 @@ const Main = () => {
     }, [])
 
     return (
-        <div id="container">
-            <header>
-                <h1>Stranger's Things</h1>
-                <div>
-                    <button>Log In</button>
-                    <button>Register</button>
+        <BrowserRouter>
+            <div id="container">
+                <header>
+                    <h1>Stranger's Things</h1>
+                    <div>
+                        {userToken ? <button onClick={() => {setUserToken("")}}>Log Out</button> : <button><Link to="/login">Log In</Link></button>}
+                        <button><Link to="/registration">Register</Link></button>
+                    </div>
+                </header>
+                <div id="sideMenu">
+                    <h3>Side Menu</h3>
+                    <button><Link to="/allposts">View All Posts</Link></button>
+                    {userToken ? <button><Link to="/createpost">Create New Post</Link></button> : undefined }
                 </div>
-            </header>
-            <div id="sideMenu">
-                <h3>Side Menu</h3>
-                <button>All Posts</button>
+                <Route path="/login">
+                    <LogIn setUserToken={setUserToken} />
+                </Route>
+                <Route path="/registration">
+                    <Registration setUserToken={setUserToken} />
+                </Route>
+                <Route path="/createpost">
+                    <CreatePost userToken={userToken}/>
+                </Route>
+                <Route path="/allposts">
+                    <Posts allPosts={allPosts} />
+                </Route>
+
+                <Route exact path="/">
+                    <Posts allPosts={allPosts} />
+                </Route>
+                <footer>Created by Dan Kempert</footer>
             </div>
-            <LogIn setUserToken={setUserToken} />
-            {/* <Registration setUserToken={setUserToken} /> */}
-            {/* <Posts allPosts={allPosts} /> */}
-            <footer>Created by Dan Kempert</footer>
-        </div>
+        </BrowserRouter>
     )
 }
 

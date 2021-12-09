@@ -17,6 +17,7 @@ body {
     "sd mn mn mn mn mn mn mn mn mn"
     "ft ft ft ft ft ft ft ft ft ft";
     grid-template-rows: 10vh 80vh 10vh;
+    grid-template-columns: 10vw;
 }
 
 header {
@@ -30,7 +31,21 @@ input {
 
 #sideMenu {
     grid-area: sd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: gold;
+}
+
+#sideMenu h3 {
+    margin: 5px 0px;
+    text-decoration: underline;
+}
+
+#sideMenu button {
+    margin-bottom: 5px;
+    padding: 5px 0px;
+    width: 75%;
 }
 
 .mainContent {
