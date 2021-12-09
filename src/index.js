@@ -10,6 +10,7 @@ const Main = () => {
     let [ usernameString, setUsernameString ] = useState("")
     let [ passwordString, setPasswordString ] = useState("")
     let [ verifyPasswordString, setVerifyPasswordString ] = useState("")
+    let [ userToken, setUserToken ] = useState("")
     
 
     useEffect(() => {
@@ -77,7 +78,7 @@ const Main = () => {
                     <button type="submit">Submit</button>
                 </form>
             </div> */}
-            <Registration usernameString={usernameString} setUsernameString={setUsernameString} passwordString={passwordString} setPasswordString={setPasswordString} verifyPasswordString={verifyPasswordString} setVerifyPasswordString={setVerifyPasswordString} />
+            <Registration setUserToken={setUserToken} usernameString={usernameString} setUsernameString={setUsernameString} passwordString={passwordString} setPasswordString={setPasswordString} verifyPasswordString={verifyPasswordString} setVerifyPasswordString={setVerifyPasswordString} />
             {/* <Posts allPosts={allPosts} /> */}
             <footer>Created by Dan Kempert</footer>
         </div>
