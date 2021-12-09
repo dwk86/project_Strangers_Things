@@ -7,6 +7,7 @@ import Registration from "./components/Registration"
 import LogIn from "./components/LogIn"
 import CreatePost from "./components/CreatePost";
 
+// Main function to control to SPA
 const Main = () => {
 
     let [ allPosts, setAllPosts ] = useState([])
