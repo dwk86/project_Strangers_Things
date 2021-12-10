@@ -1,8 +1,24 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { fetchAllPosts } from "./api"
 
 const Posts = (props) => {
 
     let allPosts = props.allPosts
+    let setAllPosts = props.setAllPosts
+
+    useEffect(() => {
+        async function getAllPosts() {
+            try {
+                const data = await fetchAllPosts()
+                console.log("data:", data)
+                setAllPosts(data.data.posts)
+            }
+            catch (error) {
+                console.error("Something went wrong fetching all posts!", error)
+            }
+        }
+        getAllPosts()
+    }, [])
 
     return ( !allPosts ?
         <div id="allPosts" className="mainContent"></div>

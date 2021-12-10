@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Link } from "react-router-dom";
-import { fetchAllPosts } from "./components/api";
 import Posts from "./components/Posts";
 import Registration from "./components/Registration"
 import LogIn from "./components/LogIn"
@@ -13,20 +12,6 @@ const Main = () => {
 
     let [ allPosts, setAllPosts ] = useState([])
     let [ userToken, setUserToken ] = useState("")
-
-    useEffect(() => {
-        async function getAllPosts() {
-            try {
-                const data = await fetchAllPosts()
-                console.log("data:", data)
-                setAllPosts(data.data.posts)
-            }
-            catch (error) {
-                console.error("Something went wrong fetching all posts!", error)
-            }
-        }
-        getAllPosts()
-    }, [])
 
     return (
         <BrowserRouter>
@@ -57,11 +42,11 @@ const Main = () => {
                     <MyPosts userToken={userToken}/>
                 </Route>
                 <Route path="/allposts">
-                    <Posts allPosts={allPosts} />
+                    <Posts setAllPosts={setAllPosts} allPosts={allPosts} />
                 </Route>
 
                 <Route exact path="/">
-                    <Posts allPosts={allPosts} />
+                    <Posts setAllPosts={setAllPosts} allPosts={allPosts} />
                 </Route>
                 <footer>Created by Dan Kempert</footer>
             </div>
