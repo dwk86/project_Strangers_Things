@@ -16,7 +16,7 @@ body {
     "hd hd hd hd hd hd hd hd hd hd"
     "sd mn mn mn mn mn mn mn mn mn"
     "ft ft ft ft ft ft ft ft ft ft";
-    grid-template-rows: 10vh 80vh 10vh;
+    grid-template-rows: 10vh 85vh 5vh;
     grid-template-columns: 10vw;
 }
 

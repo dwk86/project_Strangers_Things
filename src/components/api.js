@@ -91,3 +91,19 @@ export async function fetchMyPosts(userToken) {
         throw error
     }
 }
+
+export async function deleteMyPost(postId, userToken) {
+    try {
+        const response = await fetch(`${BASE_URL}posts/${postId}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${userToken}`
+            }
+        })
+        const data = await response.json()
+        return data
+    } catch (error) {
+        throw error
+    }
+}
