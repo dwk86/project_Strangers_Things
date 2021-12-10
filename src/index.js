@@ -6,21 +6,20 @@ import Posts from "./components/Posts";
 import Registration from "./components/Registration"
 import LogIn from "./components/LogIn"
 import CreatePost from "./components/CreatePost";
+import MyPosts from "./components/MyPosts";
 
 // Main function to control to SPA
 const Main = () => {
 
     let [ allPosts, setAllPosts ] = useState([])
     let [ userToken, setUserToken ] = useState("")
-    
-    console.log("userToken:", userToken)
 
     useEffect(() => {
         async function getAllPosts() {
             try {
                 const data = await fetchAllPosts()
                 console.log("data:", data)
-                setAllPosts(data)
+                setAllPosts(data.data.posts)
             }
             catch (error) {
                 console.error("Something went wrong fetching all posts!", error)
@@ -43,6 +42,7 @@ const Main = () => {
                     <h3>Side Menu</h3>
                     <button><Link to="/allposts">View All Posts</Link></button>
                     {userToken ? <button><Link to="/createpost">Create New Post</Link></button> : undefined }
+                    {userToken ? <button><Link to="/myposts">View My Posts</Link></button> : undefined}
                 </div>
                 <Route path="/login">
                     <LogIn setUserToken={setUserToken} />
@@ -51,7 +51,10 @@ const Main = () => {
                     <Registration setUserToken={setUserToken} />
                 </Route>
                 <Route path="/createpost">
-                    <CreatePost userToken={userToken}/>
+                    <CreatePost allPosts={allPosts} setAllPosts={setAllPosts} userToken={userToken}/>
+                </Route>
+                <Route path="/myposts">
+                    <MyPosts userToken={userToken}/>
                 </Route>
                 <Route path="/allposts">
                     <Posts allPosts={allPosts} />
