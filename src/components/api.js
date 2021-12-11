@@ -52,6 +52,21 @@ export async function logInUser(logInUsername, logInPassword) {
     }
 }
 
+export async function isLoggedIn(userToken) {
+    try {
+        const response = await fetch(`${BASE_URL}test/me`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${userToken}`
+            }
+        })
+        const data = await response.json()
+        return data
+    } catch (error) {
+        throw error
+    }
+}
+
 export async function createNewPost(userToken, postTitle, postDescription, postPrice, postLocation, postWillDeliver) {
     try {
         const response = await fetch(`${BASE_URL}posts`, {

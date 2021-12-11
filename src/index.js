@@ -12,6 +12,7 @@ const Main = () => {
 
     let [ allPosts, setAllPosts ] = useState([])
     let [ userToken, setUserToken ] = useState("")
+    let [ usernameId, setUsernameId ] = useState("")
 
     console.log("userToken:", userToken)
 
@@ -32,7 +33,7 @@ const Main = () => {
                     {userToken ? <button><Link to="/myposts">View My Posts</Link></button> : undefined}
                 </div>
                 <Route path="/login">
-                    <LogIn setUserToken={setUserToken} />
+                    <LogIn setUsernameId={setUsernameId} setUserToken={setUserToken} />
                 </Route>
                 <Route path="/registration">
                     <Registration setUserToken={setUserToken} />
@@ -44,11 +45,11 @@ const Main = () => {
                     <MyPosts userToken={userToken}/>
                 </Route>
                 <Route path="/allposts">
-                    <Posts userToken={userToken} setAllPosts={setAllPosts} allPosts={allPosts} />
+                    <Posts usernameId={usernameId} userToken={userToken} setAllPosts={setAllPosts} allPosts={allPosts} />
                 </Route>
 
                 <Route exact path="/">
-                    <Posts userToken={userToken} setAllPosts={setAllPosts} allPosts={allPosts} />
+                    <Posts usernameId={usernameId} userToken={userToken} setAllPosts={setAllPosts} allPosts={allPosts} />
                 </Route>
                 <footer>Created by Dan Kempert</footer>
             </div>

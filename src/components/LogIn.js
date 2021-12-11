@@ -1,9 +1,10 @@
 import React, { useState } from "react"
-import { logInUser } from "./api"
+import { isLoggedIn, logInUser } from "./api"
 
 const LogIn = (props) => {
 
     let setUserToken = props.setUserToken
+    let setUsernameId = props.setUsernameId
 
     let [ user, setUser ] = useState("")
     let [ pass, setPass ] = useState("")
@@ -20,6 +21,8 @@ const LogIn = (props) => {
                 console.log("confirmation", confirmation)
                 if (confirmation.success) {
                     setUserToken(confirmation.data.token)
+                    let data = await isLoggedIn(confirmation.data.token)
+                    setUsernameId(data.data.user.username)
                     setMessageToUser(confirmation.data.message)
                 } else {
                     setMessageToUser(confirmation.error.message)
