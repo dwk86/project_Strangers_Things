@@ -91,6 +91,20 @@ input {
     align-items: center;
 }
 
+#myPosts {
+    display: grid;
+    grid-template-areas: "posts messages";
+    grid-template-columns: 50%;
+}
+
+#allMessagesArea {
+    grid-area: messages;
+}
+
+#postArea {
+    grid-area: posts;
+}
+
 footer {
     grid-area: ft;
     background-color: violet;
