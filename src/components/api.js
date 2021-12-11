@@ -122,3 +122,24 @@ export async function deleteMyPost(postId, userToken) {
         throw error
     }
 }
+
+export async function sendMessageToUser(postId, userToken, messageContent) {
+    try {
+        const response = await fetch(`${BASE_URL}posts/${postId}/messages`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${userToken}`
+            },
+            body: JSON.stringify({
+                message: {
+                    content: messageContent
+                }
+            })
+        })
+        const data = await response.json()
+        return data
+    } catch (error) {
+        throw error
+    }
+}

@@ -6,6 +6,7 @@ import Registration from "./components/Registration"
 import LogIn from "./components/LogIn"
 import CreatePost from "./components/CreatePost";
 import MyPosts from "./components/MyPosts";
+import MessageUser from "./components/MessageUser";
 
 // Main function to control to SPA
 const Main = () => {
@@ -13,8 +14,7 @@ const Main = () => {
     let [ allPosts, setAllPosts ] = useState([])
     let [ userToken, setUserToken ] = useState("")
     let [ usernameId, setUsernameId ] = useState("")
-
-    console.log("userToken:", userToken)
+    let [ targetPostId, setTargetPostId ] = useState("")
 
     return (
         <BrowserRouter>
@@ -45,11 +45,14 @@ const Main = () => {
                     <MyPosts userToken={userToken}/>
                 </Route>
                 <Route path="/allposts">
-                    <Posts usernameId={usernameId} userToken={userToken} setAllPosts={setAllPosts} allPosts={allPosts} />
+                    <Posts setTargetPostId={setTargetPostId} usernameId={usernameId} userToken={userToken} setAllPosts={setAllPosts} allPosts={allPosts} />
+                </Route>
+                <Route path="/messageuser">
+                    <MessageUser targetPostId={targetPostId} userToken={userToken}/>
                 </Route>
 
                 <Route exact path="/">
-                    <Posts usernameId={usernameId} userToken={userToken} setAllPosts={setAllPosts} allPosts={allPosts} />
+                    <Posts setTargetPostId={setTargetPostId} usernameId={usernameId} userToken={userToken} setAllPosts={setAllPosts} allPosts={allPosts} />
                 </Route>
                 <footer>Created by Dan Kempert</footer>
             </div>

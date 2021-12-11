@@ -1,4 +1,5 @@
 import React, { useEffect } from "react"
+import { Link } from "react-router-dom"
 import { fetchAllPosts } from "./api"
 
 const Posts = (props) => {
@@ -7,6 +8,7 @@ const Posts = (props) => {
     let setAllPosts = props.setAllPosts
     let userToken = props.userToken
     let usernameId = props.usernameId
+    let setTargetPostId = props.setTargetPostId
 
     useEffect(() => {
         async function getAllPosts() {
@@ -33,7 +35,9 @@ const Posts = (props) => {
                     <div className="postDescription">{el.description}</div>
                     <h3 className="postPrice">{el.price} - {el.willDeliver ? "Will Deliver" : "Will NOT Deliver"}</h3>
                     {userToken && usernameId != el.author.username ? 
-                        <button className="postMessageButton">Message {el.author.username}</button>
+                        <button className="postMessageButton" onClick={() => setTargetPostId(el._id)}>
+                            <Link to="/messageuser">Message {el.author.username}</Link>
+                        </button>
                     : undefined }
                 </div>
             )) : "No Data Found!"}
