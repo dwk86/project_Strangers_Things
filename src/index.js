@@ -13,6 +13,8 @@ const Main = () => {
     let [ allPosts, setAllPosts ] = useState([])
     let [ userToken, setUserToken ] = useState("")
 
+    console.log("userToken:", userToken)
+
     return (
         <BrowserRouter>
             <div id="container">
@@ -42,11 +44,11 @@ const Main = () => {
                     <MyPosts userToken={userToken}/>
                 </Route>
                 <Route path="/allposts">
-                    <Posts setAllPosts={setAllPosts} allPosts={allPosts} />
+                    <Posts userToken={userToken} setAllPosts={setAllPosts} allPosts={allPosts} />
                 </Route>
 
                 <Route exact path="/">
-                    <Posts setAllPosts={setAllPosts} allPosts={allPosts} />
+                    <Posts userToken={userToken} setAllPosts={setAllPosts} allPosts={allPosts} />
                 </Route>
                 <footer>Created by Dan Kempert</footer>
             </div>
