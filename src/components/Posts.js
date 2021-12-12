@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { fetchAllPosts } from "./api"
 
@@ -9,6 +9,8 @@ const Posts = (props) => {
     let userToken = props.userToken
     let usernameId = props.usernameId
     let setTargetPostId = props.setTargetPostId
+
+    const [ searchTerm, setSearchTerm ] = useState("")
 
     useEffect(() => {
         async function getAllPosts() {
@@ -24,11 +26,30 @@ const Posts = (props) => {
         getAllPosts()
     }, [])
 
+    function postMatches (post, text) {
+        if (post.title.includes(text)) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    const filteredPosts = allPosts.filter(post => postMatches(post, searchTerm))
+    const postsToDisplay = searchTerm.length ? filteredPosts : allPosts
+    console.log("postsToDisplay:", postsToDisplay)
+
     return ( !allPosts ?
         <div id="allPosts" className="mainContent"></div>
         :
         <div id="allPosts" className="mainContent">
-            {allPosts ? allPosts.map((el, index) => (
+            <label htmlFor="searchPosts">Search:</label>
+            <input 
+                id="searchPosts" 
+                type="text"
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}>
+            </input>
+            {allPosts ? postsToDisplay.map((el, index) => (
                 <div key={index} className="postElement">
                     <h2 className="postTitle">{el.title}</h2>
                     <h5 className="postAuthor">By: {el.author.username} - Location: {el.location}</h5>

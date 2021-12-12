@@ -27,7 +27,7 @@ const Main = () => {
                     </div>
                 </header>
                 <div id="sideMenu">
-                    <h3>Side Menu</h3>
+                    <h3>User Navigation</h3>
                     <button><Link to="/allposts">View All Posts</Link></button>
                     {userToken ? <button><Link to="/createpost">Create New Post</Link></button> : undefined }
                     {userToken ? <button><Link to="/myposts">View My Posts</Link></button> : undefined}
