@@ -56,9 +56,11 @@ const Posts = (props) => {
                     <div className="postDescription">{el.description}</div>
                     <h3 className="postPrice">{el.price} - {el.willDeliver ? "Will Deliver" : "Will NOT Deliver"}</h3>
                     {userToken && usernameId != el.author.username ? 
-                        <button className="postMessageButton" onClick={() => setTargetPostId(el._id)}>
-                            <Link to="/messageuser">Message {el.author.username}</Link>
-                        </button>
+                        <Link to="/messageuser">
+                            <button className="postMessageButton" onClick={() => setTargetPostId(el._id)}>
+                            Message {el.author.username}
+                            </button>
+                        </Link>
                     : undefined }
                 </div>
             )) : "No Data Found!"}

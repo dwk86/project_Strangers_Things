@@ -21,16 +21,16 @@ const Main = () => {
             <div id="container">
                 <header>
                     <h1>Stranger's Things</h1>
-                    <div>
-                        {userToken ? <button onClick={() => {setUserToken("")}}>Log Out</button> : <button><Link to="/login">Log In</Link></button>}
-                        <button><Link to="/registration">Register</Link></button>
+                    <div id="logOrRegister">
+                        {userToken ? <button onClick={() => {setUserToken("")}}>Log Out</button> : <Link to="/login"><button id="logInButton">Log In</button></Link>}
+                        <Link to="/registration"><button id="registerButton">Register</button></Link>
                     </div>
                 </header>
                 <div id="sideMenu">
                     <h3>User Navigation</h3>
-                    <button><Link to="/allposts">View All Posts</Link></button>
-                    {userToken ? <button><Link to="/createpost">Create New Post</Link></button> : undefined }
-                    {userToken ? <button><Link to="/myposts">View My Posts</Link></button> : undefined}
+                    <Link to="/allposts"><button className="sideMenuButton">View All Posts</button></Link>
+                    {userToken ? <Link to="/createpost"><button className="sideMenuButton">Create New Post</button></Link> : undefined }
+                    {userToken ? <Link to="/myposts"><button className="sideMenuButton">View My Posts</button></Link> : undefined}
                 </div>
                 <Route path="/login">
                     <LogIn setUsernameId={setUsernameId} setUserToken={setUserToken} />
