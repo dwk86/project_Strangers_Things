@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
 * {
     box-sizing: border-box;
     text-decoration: none;
+    font-family: 'Special Elite', cursive;
     margin: 0;
-    padding: 0;
+    padding: 2px 0px;
 }
 
 #container {
@@ -15,6 +18,7 @@
     grid-template-columns: 10vw;
     height: 100vh;
     width: 100vw;
+    padding: 0;
 }
 
 header {
@@ -28,7 +32,7 @@ header {
 }
 
 header h1 {
-    font-size: 48px;
+    font-size: 60px;
 }
 
 #logOrRegister button{
@@ -55,6 +59,7 @@ input {
 #sideMenu h3 {
     margin: 5px 0px;
     text-decoration: underline;
+    text-align: center;
 }
 
 .sideMenuButton {
@@ -129,8 +134,13 @@ input {
 #createPostForm {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 50%;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+#newPostDeliver {
+    margin-left: 5px;
 }
 
 #myPosts {
@@ -139,8 +149,32 @@ input {
     grid-template-columns: 50%;
 }
 
+#myPosts button {
+    padding: 1px 5px;
+}
+
+.myPostsDeletePost {
+    margin-left: 5px;
+}
+
+.myPostElement {
+    border-bottom: 2px solid rgb(38,38,38);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    margin-right: 5px;
+}
+
 #allMessagesArea {
     grid-area: messages;
+    padding-left: 10px;
+    border-left: 2px solid rgb(38,38,38);
+}
+
+.myMessageElement {
+    border-bottom: 2px solid rgb(38,38,38);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    margin-right: 5px;
 }
 
 #postArea {
